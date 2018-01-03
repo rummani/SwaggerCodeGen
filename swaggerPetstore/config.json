@@ -13,7 +13,7 @@
 			"name": "default.xml",
 			"tokens": [{
 				"xpath": "/TargetEndpoint/HTTPTargetConnection/URL",
-				"value": "http://weather.yahooapis.com"
+				"value": "http://weather.yahooapis1.com"
 			}]
 
 		}]
