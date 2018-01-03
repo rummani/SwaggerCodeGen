@@ -1,4 +1,4 @@
 #!/bin/bash
 pwd
-source ../setup/setenv.sh
+source ../setenv.sh
 mvn apigee-enterprise:deploy -P test -Dusername=$username -Dpassword=$pwd
