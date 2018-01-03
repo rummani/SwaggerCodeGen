@@ -1,0 +1,128 @@
+<ProxyEndpoint name="petproxy">
+<Description>APIProxyTemplate</Description>
+	<!-- Generic Fault Rules defined below. -->
+	<PreFlow name="PreFlow">
+  <Step><Name>tp_AssignMessage.InitializeConfigurations</Name></Step>
+  <Step><FaultRules /><Name>tp_SpikeArrest.TrafficSpikeProtection</Name></Step>
+  <!-- Security policies BEGINING -->
+			<Step>
+			<FaultRules />
+			<Name>tp_JSONThreatProtection.DoSAEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Name>tp_XMLThreatProtection.DoSAEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Name>tp_JS.SQLInjectionEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Name>tp_JS.ServerSideIncludeInjectionEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Name>tp_JS.JavaScriptInjectionEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Name>tp_JS.XPathSyntaxInjectionEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Condition>threatProtectionEvaluationStatus == "failed"</Condition>
+			<Name>tp_RaiseFault.RedirectToDefaultFaultHandling</Name>
+			</Step>
+	<!-- Security policies END -->
+  </PreFlow>
+  <Flows>
+  <Flow name="addPet">
+  <Description>Add a new pet to the store</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/pet&quot;) and (request.verb = &quot;POST&quot;)</Condition>
+  </Flow>
+  <Flow name="deletePet">
+  <Description>Deletes a pet</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/pet/{petId}&quot;) and (request.verb = &quot;DELETE&quot;)</Condition>
+  </Flow>
+  <Flow name="findPetsByStatus">
+  <Description>Finds Pets by status</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/pet/findByStatus&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+  </Flow>
+  <Flow name="findPetsByTags">
+  <Description>Finds Pets by tags</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/pet/findByTags&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+  </Flow>
+  <Flow name="getPetById">
+  <Description>Find pet by ID</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/pet/{petId}&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+  </Flow>
+  <Flow name="updatePet">
+  <Description>Update an existing pet</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/pet&quot;) and (request.verb = &quot;PUT&quot;)</Condition>
+  </Flow>
+  <Flow name="updatePetWithForm">
+  <Description>Updates a pet in the store with form data</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/pet/{petId}&quot;) and (request.verb = &quot;POST&quot;)</Condition>
+  </Flow>
+  <Flow name="uploadFile">
+  <Description>uploads an image</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/pet/{petId}/uploadImage&quot;) and (request.verb = &quot;POST&quot;)</Condition>
+  </Flow>
+</Flows>
+  <HTTPProxyConnection>
+    <!-- Define a URI to create the path to this proxy. -->	
+    <BasePath>http://petstore.swagger.io/v2</BasePath>  
+    <!-- Listen on HTTP URL defined in the VirtualHost named 'default'. -->	
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="Route">
+    <!-- No route. This API proxy is an echo service. -->
+  </RouteRule>
+</ProxyEndpoint>

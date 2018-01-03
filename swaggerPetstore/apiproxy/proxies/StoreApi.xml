@@ -1,0 +1,92 @@
+<ProxyEndpoint name="storeproxy">
+<Description>APIProxyTemplate</Description>
+	<!-- Generic Fault Rules defined below. -->
+	<PreFlow name="PreFlow">
+  <Step><Name>tp_AssignMessage.InitializeConfigurations</Name></Step>
+  <Step><FaultRules /><Name>tp_SpikeArrest.TrafficSpikeProtection</Name></Step>
+  <!-- Security policies BEGINING -->
+			<Step>
+			<FaultRules />
+			<Name>tp_JSONThreatProtection.DoSAEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Name>tp_XMLThreatProtection.DoSAEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Name>tp_JS.SQLInjectionEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Name>tp_JS.ServerSideIncludeInjectionEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Name>tp_JS.JavaScriptInjectionEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Name>tp_JS.XPathSyntaxInjectionEvaluation</Name>
+			<Condition>(request.content.length > 0)</Condition>
+			</Step>
+			<Step>
+			<FaultRules />
+			<Condition>threatProtectionEvaluationStatus == "failed"</Condition>
+			<Name>tp_RaiseFault.RedirectToDefaultFaultHandling</Name>
+			</Step>
+	<!-- Security policies END -->
+  </PreFlow>
+  <Flows>
+  <Flow name="deleteOrder">
+  <Description>Delete purchase order by ID</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/store/order/{orderId}&quot;) and (request.verb = &quot;DELETE&quot;)</Condition>
+  </Flow>
+  <Flow name="getInventory">
+  <Description>Returns pet inventories by status</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/store/inventory&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+  </Flow>
+  <Flow name="getOrderById">
+  <Description>Find purchase order by ID</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/store/order/{orderId}&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+  </Flow>
+  <Flow name="placeOrder">
+  <Description>Place an order for a pet</Description>
+    <Request>
+        <Step><Name>tp_JS.GetFlowName</Name></Step>
+    </Request>
+    <Response>
+    </Response>
+    <Condition>(proxy.pathsuffix MatchesPath &quot;/store/order&quot;) and (request.verb = &quot;POST&quot;)</Condition>
+  </Flow>
+</Flows>
+  <HTTPProxyConnection>
+    <!-- Define a URI to create the path to this proxy. -->	
+    <BasePath>http://petstore.swagger.io/v2</BasePath>  
+    <!-- Listen on HTTP URL defined in the VirtualHost named 'default'. -->	
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="Route">
+    <!-- No route. This API proxy is an echo service. -->
+  </RouteRule>
+</ProxyEndpoint>

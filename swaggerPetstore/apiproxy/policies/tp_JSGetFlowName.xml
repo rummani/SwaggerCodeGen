@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript name="tp_JSGetFlowName" timeLimit="0" enabled="true" continueOnError="true">
+    <DisplayName>tp_JS.GetFlowName</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <ResourceURL>jsc://tp_getFlowName.js</ResourceURL>
+</Javascript>
