@@ -2,7 +2,8 @@
 <Description>APIProxyTemplate</Description>
 	<!-- Generic Fault Rules defined below. -->
 	<PreFlow name="PreFlow">
-  <Step>
+  <Request>
+		<Step>
 	  <Name>tp_AssignMessage.InitializeConfigurations</Name>
   </Step>
   <Step>
@@ -46,6 +47,9 @@
 			<Name>tp_RaiseFault.RedirectToDefaultFaultHandling</Name>
 			</Step>
 	<!-- Security policies END -->
+		</Request>
+		<Response>
+		</Response>
   </PreFlow>
   <Flows>
   <Flow name="addPet">
