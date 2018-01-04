@@ -43,8 +43,7 @@
 			</Step>
 	<!-- Security policies END -->
 	</Request>
-	<Response>
-	</Response>
+	<Response/>
   </PreFlow>
   <Flows>
   <Flow name="deleteOrder">

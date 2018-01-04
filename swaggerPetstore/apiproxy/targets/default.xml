@@ -14,6 +14,5 @@
     <HTTPTargetConnection>
         <Properties/>
         <URL>www.google.com</URL>
-        <URL>www.google.com</URL>
     </HTTPTargetConnection>
 </TargetEndpoint>
