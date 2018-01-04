@@ -23,7 +23,7 @@ username="rummani@prokarma.com"
 url="https://api.enterprise.apigee.com"
 env='test'
 api_domain="apigee.net"
-proxy='streaming'
+proxy='streaming1'
 pwd='Nov@2017'
 ## Do not change the settings below
 ## --------------------------------------
