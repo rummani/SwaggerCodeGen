@@ -1,3 +1,4 @@
+#!/bin/sh
  node -v
  pwd
  npm install apigeelint
