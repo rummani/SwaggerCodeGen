@@ -70,15 +70,15 @@
 			<Step>
 				<Name>tp_Quota.RateLimitingTransactionCount</Name>
 			</Step>
-	 <!-- Rate Limit Check END>
-	<!-- Request  info Logging START>
+	 <!-- Rate Limit Check END-->
+	<!-- Request  info Logging START-->
 			<Step>
 				<Name>tp_JS.ExtractHeadersFromRequest</Name>
 			</Step>
 			<Step>
 				<Name>tp_MessageLogging.Logger</Name>
 			</Step>
-	 <!-- Request  info Logging START>
+	 <!-- Request  info Logging END-->
 	</Request>
 	<Response/>
   </PreFlow>

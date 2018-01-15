@@ -70,7 +70,7 @@
 			<Step>
 				<Name>tp_Quota.RateLimitingTransactionCount</Name>
 			</Step>
-	 <!-- Rate Limit Check END>
+	 <!-- Rate Limit Check END-->
 	<!-- Request  info Logging START-->
 			<Step>
 				<Name>tp_JS.ExtractHeadersFromRequest</Name>
