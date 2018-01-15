@@ -13,6 +13,6 @@
     <Flows/>
     <HTTPTargetConnection>
         <Properties/>
-        <URL>www.google11.com</URL>
+        <URL>www.google.com</URL>
     </HTTPTargetConnection>
 </TargetEndpoint>

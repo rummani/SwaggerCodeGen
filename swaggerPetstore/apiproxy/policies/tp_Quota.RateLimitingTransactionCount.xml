@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+ <Allow countRef="rateLimitTransactionCount"/>
+    <Interval>1</Interval>
+    <TimeUnit ref="rateLimitTransactionUnit" />
+    <Identifier ref="client_id"/>
+    <Distributed>true</Distributed>
+    <Synchronous>false</Synchronous>
+    <DisplayName>Rate Limiting Transaction</DisplayName>
+</Quota>
