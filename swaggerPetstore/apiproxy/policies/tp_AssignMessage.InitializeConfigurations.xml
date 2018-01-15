@@ -17,7 +17,7 @@
 		<Name>spikeArrest.rate</Name>
 		<Value>[TO_BE_REPLACED]</Value>
 	</AssignVariable>
-	<!-- Rate Limit Configuration START -->
+	<!-- Rate Limit Configuration START-->
 	<AssignVariable>
 		<Name>rateLimitTransactionCountID</Name>
 		<Value>[TO_BE_REPLACED]</Value>
@@ -34,5 +34,5 @@
 		<Name>rateLimitQuotaUnitID</Name>
 		<Value>[TO_BE_REPLACED]</Value>
 	</AssignVariable>
-	<!-- Rate Limit Configuration END -->
+	<!-- Rate Limit Configuration END-->
 </AssignMessage>
