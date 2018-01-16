@@ -9,7 +9,7 @@
 				<Name>tp_SetJSONErrorMessage</Name>
 			</Step>
      </FaultRule>
-    <FaultRules>
+    </FaultRules>
 
 	<!-- Generic Fault Rules defined below. -->
 	<PreFlow name="PreFlow">
