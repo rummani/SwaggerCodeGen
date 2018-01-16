@@ -6,7 +6,7 @@
 				<Name>tp_GenericFaultHandling</Name>
 			</Step>
 			<Step>
-				<Name>tp_SetJSONErrorMessage</Name>
+				<Name>tp_SetJSONErrorMessage1</Name>
 			</Step>
      </FaultRule>
     </FaultRules>
