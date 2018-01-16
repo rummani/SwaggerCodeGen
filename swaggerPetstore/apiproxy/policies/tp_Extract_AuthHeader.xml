@@ -8,9 +8,6 @@
 	<Header name="Authorization">
 		<Pattern ignoreCase="true">{bearerWithToken}</Pattern>
 	</Header>
-	<Header name="Origin">
-		<Pattern ignoreCase="true">{origin}</Pattern>
-	</Header>
 	<VariablePrefix>requestToken</VariablePrefix>
 </ExtractVariables>
 
