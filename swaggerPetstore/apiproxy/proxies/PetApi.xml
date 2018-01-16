@@ -1,16 +1,15 @@
 <ProxyEndpoint name="petproxy">
 <Description>APIProxyTemplate</Description>
     <FaultRules>
-     <FaultRule Name="faultRules">
+     <FaultRule name="faultRules">
            <Step>
 				<Name>tp_GenericFaultHandling</Name>
 			</Step>
 			<Step>
-				<Name>tp_SetJSONErrorMessage1</Name>
+				<Name>tp_SetJSONErrorMessage</Name>
 			</Step>
      </FaultRule>
     </FaultRules>
-
 	<!-- Generic Fault Rules defined below. -->
 	<PreFlow name="PreFlow">
 	<Request>

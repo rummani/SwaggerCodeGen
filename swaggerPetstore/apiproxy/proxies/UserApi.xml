@@ -1,7 +1,7 @@
 <ProxyEndpoint name="userproxy">
 <Description>APIProxyTemplate</Description>
     <FaultRules>
-     <FaultRule Name="faultRules">
+     <FaultRule name="faultRules">
            <Step>
 				<Name>tp_GenericFaultHandling</Name>
 			</Step>
